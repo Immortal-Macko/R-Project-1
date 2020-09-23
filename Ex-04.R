@@ -11,7 +11,8 @@ data(Indometh)
 str(Indometh) #66 obs. of  3 variables.  Ord.factor w/ 6 levels.
 
 #Упражнение 4.4.
-#Выведите в консоль первые пять строк, последние пять строк фрейма, а также описательные статистики по фрейму.
+#Выведите в консоль первые пять строк, последние пять строк фрейма, а также описательные статистики по фрейму. Столбец Subject: фактор с 6 уровнями,
+#столбцы time и conc - числовые.
 head(Indometh, n = 5)
 tail(Indometh, n = 5)
 summary(Indometh)
@@ -27,5 +28,5 @@ Indometh[, sapply(Indometh, is.numeric)]
 
 #Упражнение 4.7.
 #Рассчитайте коэффициенты вариации и среднее квартильное расстояние по каждому столбцу получившегося фрейма. 
-100*sapply(Indometh, sd)/colMeans(Indometh)
+sapply(Indometh[, sapply(Indometh, is.numeric)], sd)/sapply(Indometh[, sapply(Indometh, is.numeric)], mean) #берем для расчета только числовые столбцы фрейма
 sapply(Indometh, IQR)/2 #Среднее квартильное расстояние
